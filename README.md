@@ -108,9 +108,31 @@ The final Wazuh dashboard contains four visualizations: **Alerts by Severity**, 
 
 ## Evidence
 
-The project was validated with eight evidence captures: active Windows agent, Sysmon Process Create telemetry, custom rule `100011`, custom-rule configuration, VirusTotal enrichment, Gemini investigation, Active Response output, and the final four-panel SOC dashboard.
+The following captures document the validated SOC pipeline from endpoint onboarding through detection, enrichment, AI-assisted investigation and response.
 
-Images should be placed under `evidence/` only after confirming that no credential or sensitive configuration is visible.
+### 1. Windows endpoint connected to Wazuh
+![Active Windows endpoint enrolled in Wazuh](evidence/01-agent-active.png)
+
+### 2. Sysmon Process Create telemetry
+![Sysmon Process Create telemetry ingested by Wazuh](evidence/02-sysmon-telemetry.png)
+
+### 3. Custom detection — Rule 100011 / MITRE T1082
+![Custom Wazuh detection for System Information Discovery](evidence/03-custom-detection-100011.png)
+
+### 4. Custom detection rule configuration
+![Custom Wazuh rule configuration](evidence/04-custom-rules.png)
+
+### 5. VirusTotal threat-intelligence enrichment
+![VirusTotal enrichment visible in Wazuh](evidence/05-virustotal-enrichment.png)
+
+### 6. Gemini AI-assisted investigation
+![Structured Gemini AI alert investigation](evidence/06-gemini-ai-investigation.png)
+
+### 7. Controlled Wazuh Active Response
+![Active Response validation output](evidence/07-active-response.png)
+
+### 8. Final SOC dashboard
+![Final four-panel AI SOC dashboard](evidence/08-final-soc-dashboard.png)
 
 ## Key troubleshooting lessons
 
@@ -134,7 +156,7 @@ Images should be placed under `evidence/` only after confirming that no credenti
 ## Repository layout
 
 ```text
-AI-SOC-Lab/
+AI-Assisted-SOC-Detection-Response-Lab/
 ├── README.md
 ├── .gitignore
 ├── configs/
@@ -149,6 +171,14 @@ AI-SOC-Lab/
 │   ├── incident-response.md
 │   └── troubleshooting.md
 └── evidence/
+    ├── 01-agent-active.png
+    ├── 02-sysmon-telemetry.png
+    ├── 03-custom-detection-100011.png
+    ├── 04-custom-rules.png
+    ├── 05-virustotal-enrichment.png
+    ├── 06-gemini-ai-investigation.png
+    ├── 07-active-response.png
+    ├── 08-final-soc-dashboard.png
     └── README.md
 ```
 
