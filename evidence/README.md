@@ -1,6 +1,6 @@
 # Evidence Manifest
 
-Eight primary PNG captures document the completed AI-assisted SOC lab. Each screenshot was reviewed before repository publication to avoid exposing API keys or credential-bearing configuration files.
+Eight primary PNG captures document the completed AI-assisted SOC lab. Each screenshot was reviewed before repository publication to avoid exposing credential-bearing configuration or secrets.
 
 1. `01-agent-active.png` — `Windows10-SOC` connected and active in Wazuh.
 2. `02-sysmon-telemetry.png` — Sysmon Process Create telemetry with relevant event fields.
@@ -13,4 +13,4 @@ Eight primary PNG captures document the completed AI-assisted SOC lab. Each scre
 
 ## Publication safety
 
-The repository intentionally excludes live Gemini and VirusTotal API keys, authentication tokens, passwords, secret-bearing shell configuration, the live Wazuh `ossec.conf`, and raw backup directories. Sanitized configuration examples use placeholders instead.
+The repository intentionally excludes live API keys, authentication tokens, passwords, secret-bearing shell configuration, the live Wazuh `ossec.conf`, and raw backup directories. Sanitized configuration examples use placeholders instead.
