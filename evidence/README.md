@@ -1,18 +1,16 @@
 # Evidence Manifest
 
-The completed lab produced eight primary PNG evidence captures. They are not generated or uploaded automatically here because the originals live on the lab host and must be visually checked for accidental credential exposure before publication.
+Eight primary PNG captures document the completed AI-assisted SOC lab. Each screenshot was reviewed before repository publication to avoid exposing API keys or credential-bearing configuration files.
 
-Expected filenames:
-
-1. `01-agent-active.png` — `Windows10-SOC` connected/active in Wazuh.
+1. `01-agent-active.png` — `Windows10-SOC` connected and active in Wazuh.
 2. `02-sysmon-telemetry.png` — Sysmon Process Create telemetry with relevant event fields.
-3. `03-custom-detection-100011.png` — custom detection with rule `100011` and MITRE T1082.
+3. `03-custom-detection-100011.png` — custom detection with rule `100011` and MITRE ATT&CK T1082.
 4. `04-custom-rules.png` — Wazuh custom-rules management view.
-5. `05-virustotal-enrichment.png` — VirusTotal enrichment evidence.
+5. `05-virustotal-enrichment.png` — VirusTotal threat-intelligence enrichment evidence.
 6. `06-gemini-ai-investigation.png` — structured Gemini SOC investigation output.
-7. `07-active-response.png` — structured Active Response evidence.
+7. `07-active-response.png` — controlled Active Response validation evidence.
 8. `08-final-soc-dashboard.png` — final four-panel security-operations dashboard.
 
-## Before adding screenshots
+## Publication safety
 
-Verify that no image exposes a Gemini API key, VirusTotal API key, authentication token, password, private credential file, or unrelated personal information. Crop/redact such data before committing the image.
+The repository intentionally excludes live Gemini and VirusTotal API keys, authentication tokens, passwords, secret-bearing shell configuration, the live Wazuh `ossec.conf`, and raw backup directories. Sanitized configuration examples use placeholders instead.
