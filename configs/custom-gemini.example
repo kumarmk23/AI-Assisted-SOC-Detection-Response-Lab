@@ -1,0 +1,14 @@
+#!/bin/bash
+# EXAMPLE ONLY. No API key is embedded in this file.
+# Wazuh Integrator passes the alert file path as the first argument.
+
+PYTHON_BIN="/opt/wazuh-ai-venv/bin/python"
+ANALYZER="/var/ossec/integrations/gemini_soc.py"
+ALERT_FILE="$1"
+
+if [ -z "$ALERT_FILE" ] || [ ! -f "$ALERT_FILE" ]; then
+  exit 1
+fi
+
+# GEMINI_API_KEY must be supplied securely outside source control.
+exec "$PYTHON_BIN" "$ANALYZER" "$ALERT_FILE"
