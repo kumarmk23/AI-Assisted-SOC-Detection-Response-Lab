@@ -1,0 +1,9 @@
+#!/bin/bash
+# Non-destructive Wazuh Active Response demonstration.
+# Reads the JSON message supplied by wazuh-execd and records evidence only.
+
+IFS= read -r INPUT
+LOG_FILE="/var/ossec/logs/soc-response.log"
+
+printf '%s | AI SOC Active Response triggered | %s\n' "$(date -Is)" "$INPUT" >> "$LOG_FILE"
+exit 0

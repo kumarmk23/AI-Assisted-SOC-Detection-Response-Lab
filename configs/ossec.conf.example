@@ -1,0 +1,34 @@
+<!--
+  EXAMPLE ONLY — do not replace your full production/lab ossec.conf with this fragment.
+  Never commit the live /var/ossec/etc/ossec.conf.
+-->
+<ossec_config>
+  <!-- VirusTotal example -->
+  <integration>
+    <name>virustotal</name>
+    <api_key>YOUR_VIRUSTOTAL_API_KEY</api_key>
+    <group>syscheck</group>
+    <alert_format>json</alert_format>
+  </integration>
+
+  <!-- Gemini custom integration example -->
+  <integration>
+    <name>custom-gemini</name>
+    <rules_id>100011</rules_id>
+    <alert_format>json</alert_format>
+  </integration>
+
+  <!-- Controlled Active Response example -->
+  <command>
+    <name>soc-response</name>
+    <executable>soc-response</executable>
+    <timeout_allowed>no</timeout_allowed>
+  </command>
+
+  <active-response>
+    <disabled>no</disabled>
+    <command>soc-response</command>
+    <location>server</location>
+    <rules_id>100011</rules_id>
+  </active-response>
+</ossec_config>

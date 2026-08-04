@@ -1,0 +1,29 @@
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*secret*
+*credentials*
+*api-key*
+*apikey*
+gemini.conf
+
+# Never commit live Wazuh manager configuration/backups
+ossec.conf
+**/ossec.conf
+ai-soc-final-backup/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log

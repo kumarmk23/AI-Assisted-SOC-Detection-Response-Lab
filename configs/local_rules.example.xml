@@ -1,0 +1,11 @@
+<!-- Sanitized AI SOC Lab example. No secrets are stored here. -->
+<group name="windows,sysmon,custom_detection,">
+  <rule id="100011" level="7">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\systeminfo\.exe$</field>
+    <description>Custom Detection: System information discovery executed</description>
+    <mitre>
+      <id>T1082</id>
+    </mitre>
+  </rule>
+</group>
