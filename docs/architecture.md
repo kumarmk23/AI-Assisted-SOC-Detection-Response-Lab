@@ -3,13 +3,16 @@
 ## Data flow
 
 ```text
-Windows 10
+Windows 10 Endpoint
   |
-  | Sysmon + Wazuh agent
+  +-- Sysmon + Wazuh Agent
+  |
   v
 Wazuh Manager / Indexer / Dashboard (Ubuntu)
   |
-  +-- Rule engine --> custom detection 100011 --> MITRE T1082
+  +-- Built-in Rules --> alerting / threat hunting
+  |
+  +-- Custom Rule 100011 --> MITRE T1082
   |
   +-- FIM --> VirusTotal enrichment
   |
@@ -17,7 +20,22 @@ Wazuh Manager / Indexer / Dashboard (Ubuntu)
   |
   +-- Active Response --> soc-response (non-destructive evidence action)
   |
-  +-- Dashboard --> severity / MITRE / rules / timeline
+  v
+SOC Dashboard --> severity / MITRE / rules / timeline
+```
+
+## Administrative flow
+
+```text
+Wazuh administrator
+        |
+        +--> Dashboard authentication
+        |
+        +--> Wazuh password-management utility
+        |
+        +--> Indexer internal users
+        |
+        +--> dependent service credential/config reload
 ```
 
 ## Design decisions
@@ -28,7 +46,13 @@ Wazuh Manager / Indexer / Dashboard (Ubuntu)
 - AI was positioned after deterministic detection, not before it.
 - VirusTotal and Gemini were enrichment/analysis sources; neither was treated as an unquestionable verdict.
 - The Active Response demonstration was intentionally non-destructive because `systeminfo.exe` is dual-use and may be legitimate.
+- Defender was not disabled to make blocked Atomic tests succeed. Prevention itself was treated as a valid defensive result.
+- API credentials remain outside Git. The repository contains sanitized examples only.
 
 ## Trust boundaries
 
-API credentials remain outside Git. The repository contains only sanitized examples. The Wazuh manager is responsible for selecting alerts before they reach the external AI service, limiting unnecessary data exposure and API usage.
+Windows endpoint telemetry crosses into the Wazuh server. Only selected Wazuh alerts are forwarded to external enrichment/AI services. This reduces unnecessary data exposure and API usage. External results return to the analyst workflow and do not automatically override Wazuh evidence.
+
+## Security boundary
+
+The lab is a controlled environment. Production deployments would require stronger network segmentation, secret management, access controls, certificate lifecycle management, alert-volume controls, and carefully tested response policies.
